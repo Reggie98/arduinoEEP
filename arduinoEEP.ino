@@ -18,11 +18,11 @@
  
 
 #define VERSION             "1.00"
-#define VERSION_DATE        20150316
+#define VERSION_DATE        20150317
 
 #define DEVICE_ID           4       // only used in initial setup to put the value into the EEPROM
 #define EEPROM_CLEAR_ALL    0       // clear all the values in the EEPROM to a default state
-#define EEPROM_DUMP_ALL     1       // dump all the EEPROM values to serial after a delay of 5 seconds from power on
+#define EEPROM_DUMP_ALL     0       // dump all the EEPROM values to serial after a delay of 5 seconds from power on
 
 // Includes
 #include "Limits.h"                 // system wide limits for code to compile on each device, and maximum allowed attachments (eg. LEDs)
