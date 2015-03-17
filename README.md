@@ -3,6 +3,7 @@
 The Arduino EEP is an Arduino standalone or RS485 networked system, with LCD display, keypad, RTC, bluetooth, multiple digital & analog I/Os, RGB LEDs, buzzer, temperature and humidity sensors, and full remote EEPROM reconfigurability.
 
 ## Key Features:
+
 1. Uses any Arduino ATmega328 16MHz (Pro Mini, Uno, Deicimillenove...)
 2. Nokia 5110 84 character display, able to show time, analog or digital I/O states, temperatures, or text
 3. 16-key (or 4-key) keypad can control any digital output, LED state, buzzer
@@ -22,6 +23,7 @@ The Arduino EEP is an Arduino standalone or RS485 networked system, with LCD dis
 17. TO DO: Android application for bluetooth communication to standalone EEPs
  
 ## Examples of uses:
+
 1. Soil moisture meter, soil temperature reading, controlling a mains unregulated propagator
 2. Electricity meter readings via flashing LED
 3. Room temperature/humidity sensing with PIR and LED lighting, MQ135 air quality sensing
@@ -33,18 +35,24 @@ The Arduino EEP is an Arduino standalone or RS485 networked system, with LCD dis
 9. Party LED lighting with "Puffometer" (count the ticks as you blow through a water flow sensor), "Drunkometer" (blow onto an MQ-3 alcohol sensor), lie detector etc. 
 
 ## Hardware Requirements:
+
 Nokia 5110 uses 3v3 and needs a conversion such as in the diagram on http://forum.arduino.cc/index.php?topic=176794.0 (http://i.imgur.com/RwCVqnF.png). It is also recommended to use a 74HC4050 
 Keypad connected as 4x4 (16-key) on MCP23017 GPIOA (see https://github.com/joeyoung/arduino_keypads/blob/master/Keypad_MC17/docs/usingMCP23017.jpg)
 
 ## Software Requirements
 Time from http://www.pjrc.com/teensy/td_libs_Time.html
+
 FastLED from https://github.com/FastLED/FastLED
+
 DS1307RTC from http://www.pjrc.com/teensy/td_libs_DS1307RTC.html
+
 OneWire from http://www.pjrc.com/teensy/td_libs_OneWire.html
+
 PCD8544_SPI (for Nokia 5110) from http://forum.arduino.cc/index.php?topic=176794.0 (download: http://forum.arduino.cc/index.php?action=dlattach;topic=176794.0;attach=54196)
 
 Change the following in the Arduino program folders: 
 Change the SERIAL_RX_BUFFER_SIZE and SERIAL_TX_BUFFER_SIZE in the file:
+
     ...\Arduino\hardware\arduino\avr\cores\arduino\HardwareSerial.h
 
 ```c++

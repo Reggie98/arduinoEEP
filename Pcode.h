@@ -99,7 +99,8 @@ public:
     PcodeCmdMcp3 =          0x70,     //         (input/output) 0-7 on GPIOA, 8-15 on GPIOB of MCP_I2C_ADDR 0x23
     PcodeCmdLed =           0x80,     // 128-134  (input/output) 0-6 leds 0 to 6 or groups of leds; 
                                       // 135      (output) increment the led mode 
-                                      // 136-143  8-15 => LED modes 1 to 8
+                                      // 136-142  8-14 => LED modes 1 to 7
+                                      // 143      set all LEDs off (black)
     PcodeCmdMisc =          0x90,     // 144-145   (input + 2 bytes) 0-1 interrupt counters 2-3; 
                                       // 144-145   (output) reset interrupt counters D2 (INT0) or D3 (INT1)to 0
     CmdMiscResetInt0 =      0x00,     // 144      (output) reset interrupt counters on D2 (INT0) to 0
