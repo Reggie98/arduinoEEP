@@ -47,6 +47,7 @@ Change the following in the Arduino program folders:
 Change the SERIAL_RX_BUFFER_SIZE and SERIAL_TX_BUFFER_SIZE in the file:
     ...\Arduino\hardware\arduino\avr\cores\arduino\HardwareSerial.h
 
+```c++
 #if (RAMEND < 1000)
 #define SERIAL_TX_BUFFER_SIZE 64
 #define SERIAL_RX_BUFFER_SIZE 128
@@ -54,7 +55,8 @@ Change the SERIAL_RX_BUFFER_SIZE and SERIAL_TX_BUFFER_SIZE in the file:
 #define SERIAL_TX_BUFFER_SIZE 64
 #define SERIAL_RX_BUFFER_SIZE 128
 #endif
-    
+```
+
 Use Arduino version 1.5.7 or lower with FastLED 3.03 (see FastLED from https://github.com/FastLED/FastLED)
 
 
