@@ -32,17 +32,17 @@ void keypad::begin ()     // initialise the keypad
     Mcp23017.write_gpio (KEYPAD_MCP_ADDR, ~KEYPAD_16KEYS_OUTPUT_BITS ) ; // set all the keypad outputs D7 to D4 to zero
   }
   keypad_millis_start = 0 ;
-  key_pressed_state == KEY_WAIT ;
+  key_pressed_state == KEYPAD_WAIT ;
 }
 
 bool keypad::isKeyReady ()
 {
-  return key_pressed_state == KEY_FOUND ;
+  return key_pressed_state == KEYPAD_FOUND ;
 }
 
 void keypad::setKeyProcessed ()
 {
-  key_pressed_state = KEY_PROCESSED ;
+  key_pressed_state = KEYPAD_PROCESSED ;
 }
 
 uint8_t keypad::getKeyPressed () 
@@ -60,13 +60,13 @@ void keypad::checkKeyPressed ()
     // read all but only select the four input lines D0 to D3
     key_pressed = (~ Mcp23017.read_gpio (KEYPAD_MCP_ADDR)) & KEYPAD_16KEYS_INPUT_BITS ;  
     
-    if (key_pressed && (key_pressed_state == KEY_WAIT))
+    if (key_pressed && (key_pressed_state == KEYPAD_WAIT))
     {
-      key_pressed_state = KEY_START ;
+      key_pressed_state = KEYPAD_START ;
     } else
-    if (key_pressed && (key_pressed_state == KEY_START))
+    if (key_pressed && (key_pressed_state == KEYPAD_START))
     {
-      key_pressed_state = KEY_FOUND ;
+      key_pressed_state = KEYPAD_FOUND ;
       // now check which key has been found and process it
       for (uint8_t i = 0; i <= 3 ; i++)
       {
@@ -101,13 +101,13 @@ void keypad::checkKeyPressed ()
         Mcp23017.write_gpio (KEYPAD_MCP_ADDR, ~KEYPAD_16KEYS_OUTPUT_BITS ) ; 
       }
     } else 
-    if (!key_pressed && key_pressed_state == KEY_PROCESSED)
+    if (!key_pressed && key_pressed_state == KEYPAD_PROCESSED)
     {
-      key_pressed_state = KEY_END ;
+      key_pressed_state = KEYPAD_END ;
     } else      
-    if (!key_pressed && key_pressed_state == KEY_END)
+    if (!key_pressed && key_pressed_state == KEYPAD_END)
     {
-      key_pressed_state = KEY_WAIT ;
+      key_pressed_state = KEYPAD_WAIT ;
     }
   }
 }

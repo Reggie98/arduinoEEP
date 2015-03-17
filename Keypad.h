@@ -56,11 +56,11 @@ private:
   uint8_t key_pressed ;
   enum KeyPressedState
   {
-    KEY_WAIT,       // waiting for a new key pressed
-    KEY_START,      // key pressed - but wait for the next sample to be sure (debounce)
-    KEY_FOUND,      // new key pressed
-    KEY_PROCESSED,  // new key has been processed (notify message sent to master, check for any PCODE commands)
-    KEY_END         // key released - but wait for next sample to be sure (debounce)
+    KEYPAD_WAIT,       // waiting for a new key pressed
+    KEYPAD_START,      // key pressed - but wait for the next sample to be sure (debounce)
+    KEYPAD_FOUND,      // new key pressed
+    KEYPAD_PROCESSED,  // new key has been processed (notify message sent to master, check for any PCODE commands)
+    KEYPAD_END         // key released - but wait for next sample to be sure (debounce)
   } ;
   KeyPressedState key_pressed_state ;
 } ;
