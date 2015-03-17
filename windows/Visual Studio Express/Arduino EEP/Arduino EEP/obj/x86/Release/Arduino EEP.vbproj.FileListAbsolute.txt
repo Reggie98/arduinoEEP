@@ -1,0 +1,42 @@
+C:\Users\Reggie\documents\visual studio 2013\Projects\Serial Port Interface\Serial Port Interface\bin\x86\Release\Serial Port Interface.exe.config
+C:\Users\Reggie\documents\visual studio 2013\Projects\Serial Port Interface\Serial Port Interface\bin\x86\Release\Serial Port Interface.exe.manifest
+C:\Users\Reggie\documents\visual studio 2013\Projects\Serial Port Interface\Serial Port Interface\bin\x86\Release\Serial Port Interface.application
+C:\Users\Reggie\documents\visual studio 2013\Projects\Serial Port Interface\Serial Port Interface\bin\x86\Release\Serial Port Interface.exe
+C:\Users\Reggie\documents\visual studio 2013\Projects\Serial Port Interface\Serial Port Interface\bin\x86\Release\Serial Port Interface.pdb
+C:\Users\Reggie\documents\visual studio 2013\Projects\Serial Port Interface\Serial Port Interface\bin\x86\Release\Serial Port Interface.xml
+C:\Users\Reggie\documents\visual studio 2013\Projects\Serial Port Interface\Serial Port Interface\obj\x86\Release\Serial_Port_Interface.frmMain.resources
+C:\Users\Reggie\documents\visual studio 2013\Projects\Serial Port Interface\Serial Port Interface\obj\x86\Release\Serial_Port_Interface.Resources.resources
+C:\Users\Reggie\documents\visual studio 2013\Projects\Serial Port Interface\Serial Port Interface\obj\x86\Release\Arduino EEP.vbproj.GenerateResource.Cache
+C:\Users\Reggie\documents\visual studio 2013\Projects\Serial Port Interface\Serial Port Interface\obj\x86\Release\Serial Port Interface.exe.manifest
+C:\Users\Reggie\documents\visual studio 2013\Projects\Serial Port Interface\Serial Port Interface\obj\x86\Release\Serial Port Interface.application
+C:\Users\Reggie\documents\visual studio 2013\Projects\Serial Port Interface\Serial Port Interface\obj\x86\Release\Serial Port Interface.exe
+C:\Users\Reggie\documents\visual studio 2013\Projects\Serial Port Interface\Serial Port Interface\obj\x86\Release\Serial Port Interface.xml
+C:\Users\Reggie\documents\visual studio 2013\Projects\Serial Port Interface\Serial Port Interface\obj\x86\Release\Serial Port Interface.pdb
+C:\Users\Reggie\Documents\Visual Studio 2013\Projects\Arduino EEP\Arduino EEP\bin\x86\Release\ArduinoEPP.exe.config
+C:\Users\Reggie\Documents\Visual Studio 2013\Projects\Arduino EEP\Arduino EEP\obj\x86\Release\ArduinoEPP.frmMain.resources
+C:\Users\Reggie\Documents\Visual Studio 2013\Projects\Arduino EEP\Arduino EEP\obj\x86\Release\ArduinoEPP.Resources.resources
+C:\Users\Reggie\Documents\Visual Studio 2013\Projects\Arduino EEP\Arduino EEP\obj\x86\Release\Arduino EEP.vbproj.GenerateResource.Cache
+C:\Users\Reggie\Documents\Visual Studio 2013\Projects\Arduino EEP\Arduino EEP\bin\x86\Release\ArduinoEPP.exe.manifest
+C:\Users\Reggie\Documents\Visual Studio 2013\Projects\Arduino EEP\Arduino EEP\bin\x86\Release\ArduinoEPP.application
+C:\Users\Reggie\Documents\Visual Studio 2013\Projects\Arduino EEP\Arduino EEP\bin\x86\Release\ArduinoEPP.exe
+C:\Users\Reggie\Documents\Visual Studio 2013\Projects\Arduino EEP\Arduino EEP\bin\x86\Release\ArduinoEPP.pdb
+C:\Users\Reggie\Documents\Visual Studio 2013\Projects\Arduino EEP\Arduino EEP\bin\x86\Release\ArduinoEPP.xml
+C:\Users\Reggie\Documents\Visual Studio 2013\Projects\Arduino EEP\Arduino EEP\obj\x86\Release\ArduinoEPP.exe.manifest
+C:\Users\Reggie\Documents\Visual Studio 2013\Projects\Arduino EEP\Arduino EEP\obj\x86\Release\ArduinoEPP.application
+C:\Users\Reggie\Documents\Visual Studio 2013\Projects\Arduino EEP\Arduino EEP\obj\x86\Release\ArduinoEPP.exe
+C:\Users\Reggie\Documents\Visual Studio 2013\Projects\Arduino EEP\Arduino EEP\obj\x86\Release\ArduinoEPP.xml
+C:\Users\Reggie\Documents\Visual Studio 2013\Projects\Arduino EEP\Arduino EEP\obj\x86\Release\ArduinoEPP.pdb
+E:\Arduino\arduinoEEP\windows\Visual Studio Express\Arduino EEP\Arduino EEP\bin\x86\Release\ArduinoEPP.exe.config
+E:\Arduino\arduinoEEP\windows\Visual Studio Express\Arduino EEP\Arduino EEP\obj\x86\Release\ArduinoEPP.exe
+E:\Arduino\arduinoEEP\windows\Visual Studio Express\Arduino EEP\Arduino EEP\obj\x86\Release\ArduinoEPP.xml
+E:\Arduino\arduinoEEP\windows\Visual Studio Express\Arduino EEP\Arduino EEP\obj\x86\Release\ArduinoEPP.pdb
+E:\Arduino\arduinoEEP\windows\Visual Studio Express\Arduino EEP\Arduino EEP\bin\x86\Release\ArduinoEPP.exe.manifest
+E:\Arduino\arduinoEEP\windows\Visual Studio Express\Arduino EEP\Arduino EEP\bin\x86\Release\ArduinoEPP.application
+E:\Arduino\arduinoEEP\windows\Visual Studio Express\Arduino EEP\Arduino EEP\bin\x86\Release\ArduinoEPP.exe
+E:\Arduino\arduinoEEP\windows\Visual Studio Express\Arduino EEP\Arduino EEP\bin\x86\Release\ArduinoEPP.pdb
+E:\Arduino\arduinoEEP\windows\Visual Studio Express\Arduino EEP\Arduino EEP\bin\x86\Release\ArduinoEPP.xml
+E:\Arduino\arduinoEEP\windows\Visual Studio Express\Arduino EEP\Arduino EEP\obj\x86\Release\ArduinoEPP.frmMain.resources
+E:\Arduino\arduinoEEP\windows\Visual Studio Express\Arduino EEP\Arduino EEP\obj\x86\Release\ArduinoEPP.Resources.resources
+E:\Arduino\arduinoEEP\windows\Visual Studio Express\Arduino EEP\Arduino EEP\obj\x86\Release\Arduino EEP.vbproj.GenerateResource.Cache
+E:\Arduino\arduinoEEP\windows\Visual Studio Express\Arduino EEP\Arduino EEP\obj\x86\Release\ArduinoEPP.exe.manifest
+E:\Arduino\arduinoEEP\windows\Visual Studio Express\Arduino EEP\Arduino EEP\obj\x86\Release\ArduinoEPP.application

@@ -1,0 +1,4 @@
+C:\Users\Reggie\Documents\Visual Studio 2013\Projects\Arduino EEP\Arduino EEP\bin\Debug\Serial Port Interface.exe.config
+C:\Users\Reggie\Documents\Visual Studio 2013\Projects\Arduino EEP\Arduino EEP\obj\Debug\Serial Port Interface.exe
+C:\Users\Reggie\Documents\Visual Studio 2013\Projects\Arduino EEP\Arduino EEP\obj\Debug\Serial Port Interface.xml
+C:\Users\Reggie\Documents\Visual Studio 2013\Projects\Arduino EEP\Arduino EEP\obj\Debug\Serial Port Interface.pdb
