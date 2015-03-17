@@ -30,5 +30,37 @@ The Arduino EEP is an Arduino standalone or RS485 networked system, with LCD dis
 6. In kitchen, monitoring fridge/freezer temps, humidity near cooker to turn on extractor fan, PIRs to control LED lighting strips below cupboards, warning beeps if keys not 
 7. Controlling LED lighting strips down stairs, or on garden paths 
 8. Displaying useful information near external door (e.g. time of next bus gleaned from web via RaspberryPi)
-9. Party lighting with "Puffometer" (count the ticks as you blow through a water flow sensor), "Drunkometer" (blow onto an MQ-3 alcohol sensor), lie detector etc. 
+9. Party LED lighting with "Puffometer" (count the ticks as you blow through a water flow sensor), "Drunkometer" (blow onto an MQ-3 alcohol sensor), lie detector etc. 
+
+## Hardware Requirements:
+Nokia 5110 uses 3v3 and needs a conversion such as in the diagram on http://forum.arduino.cc/index.php?topic=176794.0 (http://i.imgur.com/RwCVqnF.png). It is also recommended to use a 74HC4050 
+Keypad connected as 4x4 (16-key) on MCP23017 GPIOA (see https://github.com/joeyoung/arduino_keypads/blob/master/Keypad_MC17/docs/usingMCP23017.jpg)
+
+## Software Requirements
+Time from http://www.pjrc.com/teensy/td_libs_Time.html
+FastLED from https://github.com/FastLED/FastLED
+DS1307RTC from http://www.pjrc.com/teensy/td_libs_DS1307RTC.html
+OneWire from http://www.pjrc.com/teensy/td_libs_OneWire.html
+PCD8544_SPI (for Nokia 5110) from http://forum.arduino.cc/index.php?topic=176794.0 (download: http://forum.arduino.cc/index.php?action=dlattach;topic=176794.0;attach=54196)
+
+Change the following in the Arduino program folders: 
+Comment out the line "extern EEPROMClass EEPROM;" in the file:
+    ...\Arduino\hardware\arduino\avr\libraries\EEPROM\EEPROM.h
+    
+Comment out the line "EEPROMClass EEPROM;" in the file:
+    ...\Arduino\hardware\arduino\avr\libraries\EEPROM\EEPROM.cpp
+
+Change the SERIAL_RX_BUFFER_SIZE and SERIAL_TX_BUFFER_SIZE in the file:
+    ...\Arduino\hardware\arduino\avr\cores\arduino\HardwareSerial.h
+
+#if (RAMEND < 1000)
+#define SERIAL_TX_BUFFER_SIZE 64
+#define SERIAL_RX_BUFFER_SIZE 128
+#else
+#define SERIAL_TX_BUFFER_SIZE 64
+#define SERIAL_RX_BUFFER_SIZE 128
+#endif
+    
+Use Arduino version 1.5.7 or lower with FastLED 3.0 (see FastLED from https://github.com/FastLED/FastLED)
+
 
