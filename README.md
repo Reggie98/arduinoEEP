@@ -44,12 +44,6 @@ OneWire from http://www.pjrc.com/teensy/td_libs_OneWire.html
 PCD8544_SPI (for Nokia 5110) from http://forum.arduino.cc/index.php?topic=176794.0 (download: http://forum.arduino.cc/index.php?action=dlattach;topic=176794.0;attach=54196)
 
 Change the following in the Arduino program folders: 
-Comment out the line "extern EEPROMClass EEPROM;" in the file:
-    ...\Arduino\hardware\arduino\avr\libraries\EEPROM\EEPROM.h
-    
-Comment out the line "EEPROMClass EEPROM;" in the file:
-    ...\Arduino\hardware\arduino\avr\libraries\EEPROM\EEPROM.cpp
-
 Change the SERIAL_RX_BUFFER_SIZE and SERIAL_TX_BUFFER_SIZE in the file:
     ...\Arduino\hardware\arduino\avr\cores\arduino\HardwareSerial.h
 
@@ -61,6 +55,6 @@ Change the SERIAL_RX_BUFFER_SIZE and SERIAL_TX_BUFFER_SIZE in the file:
 #define SERIAL_RX_BUFFER_SIZE 128
 #endif
     
-Use Arduino version 1.5.7 or lower with FastLED 3.0 (see FastLED from https://github.com/FastLED/FastLED)
+Use Arduino version 1.5.7 or lower with FastLED 3.03 (see FastLED from https://github.com/FastLED/FastLED)
 
 

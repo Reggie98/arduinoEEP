@@ -1,12 +1,6 @@
 /* 
   EEPROMAnything.h  eeprom read or write anything, and eeprom update only if new value is different from current
   Copyright         (C) 2014 Reggie Thomson.  All rights reserved.
-
-  NOTE: This requires you comment out the line "extern EEPROMClass EEPROM;" in the file:
-    ...\Arduino\hardware\arduino\avr\libraries\EEPROM\EEPROM.h
-    
-  AND: comment out the line "EEPROMClass EEPROM;" in the file:
-    ...\Arduino\hardware\arduino\avr\libraries\EEPROM\EEPROM.cpp
     
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -38,12 +32,21 @@
 extern volatile unsigned long interrupt_count0 ;
 extern volatile unsigned long interrupt_count1 ;
 
-class CEepromAnything : public EEPROMClass
+#include <inttypes.h>
+
+
+class CEepromAnything
 {
 
 public:
   CEepromAnything () ;
   // void begin () ;                // not needed
+
+  // BEGIN copied from ...\Arduino\hardware\arduino\avr\libraries\EEPROM\EEPROM.cpp
+  uint8_t read (int) ;
+  void write (int, uint8_t) ;
+  // END copied from ...\Arduino\hardware\arduino\avr\libraries\EEPROM\EEPROM.cpp
+
   void checkUpdate () ;              // updates the time and interrupt counter values every hour
   void updateByte (int, uint8_t) ;  // writes the value to the EEPROM address only if it is different from the current stored value
   void updateLong (int, unsigned long) ;

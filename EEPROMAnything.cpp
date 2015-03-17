@@ -1,12 +1,6 @@
 /* 
   EEPROMAnything.h  eeprom read or write anything, and eeprom update only if new value is different from current
   Copyright         (C) 2014 Reggie Thomson.  All rights reserved.
-
-  NOTE: This requires you comment out the line "extern EEPROMClass EEPROM;" in the file:
-    ...\Arduino\hardware\arduino\avr\libraries\EEPROM\EEPROM.h
-    
-  AND: comment out the line "EEPROMClass EEPROM;" in the file:
-    ...\Arduino\hardware\arduino\avr\libraries\EEPROM\EEPROM.cpp
   
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -22,8 +16,15 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+// BEGIN copied from ...\Arduino\hardware\arduino\avr\libraries\EEPROM\EEPROM.cpp
+#include <avr/eeprom.h>
+#include "Arduino.h"
+#include "EEPROM.h"
+// END copied from ...\Arduino\hardware\arduino\avr\libraries\EEPROM\EEPROM.cpp
+
 #include "EEPROMAnything.h"
 #include "Alarms.h"
+
 
 CEepromAnything::CEepromAnything ()
 {
@@ -35,6 +36,18 @@ void CEepromAnything::begin ()
   m_last_hour = hour () ;
 }
 */
+
+// BEGIN copied from ...\Arduino\hardware\arduino\avr\libraries\EEPROM\EEPROM.cpp
+uint8_t CEepromAnything::read (int address)
+{
+	return eeprom_read_byte ((unsigned char *) address) ;
+}
+
+void CEepromAnything::write (int address, uint8_t value)
+{
+	eeprom_write_byte ((unsigned char *) address, value) ;
+}
+// END copied from ...\Arduino\hardware\arduino\avr\libraries\EEPROM\EEPROM.cpp
 
 void CEepromAnything::checkUpdate ()
 {
