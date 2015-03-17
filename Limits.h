@@ -1,6 +1,6 @@
 /* 
   Limits.h        system limits for project, and arduino fixed pin definitions
-  Copyright       (C) 2014 Reggie Thomson.  All rights reserved.
+  Copyright       (C) 2015 Reggie Thomson.  All rights reserved.
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@
 #define COMPILE_LEDSTRIP     1          // include the single wire WS8211 chip RGB LED driver code
 #define COMPILE_DS1307RTC    1          // rtc module
 
-#define LEDS_MAX             60         // don't exceed 127; memory used = 3* = 150 bytes; could also limit max in EEPROM (not yet implemented)
+#define LEDS_MAX             60         // don't exceed 127; memory used = 3* = 180 bytes; 
 #define TEMP_SENSORS_MAX     6          // to increase - need to increase size of index in EE_PCODE_TEMPS from 16 (6 DS18B20s, 2 for HTU21D)
 #define ANALOG_INPUTS_MAX    8          // maximum number of analog inputs (NB. 8 is only 6 because of I2C pins)
 #define MCP23017_MAX         4          // maximum number of 16 port MCP23107 chips on system
@@ -46,7 +46,7 @@
 #define RS485_TX_DISABLE     0          // on the prototype, the rx_enable is hard-wired to off; 
                                         //   this only disables transmission (i.e. doesn't enable receipt of data)
 
-#define BEEPER_PIN           5          // PWM5-Timer0; MUST be defined before including "Beeper.h"
+#define BEEPER_PIN           5          // PWM5-Timer0; NB. MUST be defined before including "Beeper.h"
 
 #define LED_PIN              6          // LED WS2812 output; PWM6-Timer0
 
@@ -65,7 +65,7 @@
 //                           A3
 //                           A4         // Analog Input 4 = I2C SDA
 //                           A5         // Analog Input 5 = I2C SCL 
-//                           A6
-//                           A7
+//                           A6         // Only available on Arduino Pro Mini
+//                           A7         // Only available on Arduino Pro Mini
 
 #endif    // LIMITS_H
