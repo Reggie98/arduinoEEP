@@ -46,15 +46,15 @@ public:
     Time =                  4,    // 4:0    long ; stored every hour 
       
     DisplayVop =            8,    // 8:0    uint8_t contrast (188)
-    DisplayTempcoef,                  // 9:0    uint8_t (5)
-    DisplayBias,                      // 10:0    uint8_t (20)
+    DisplayTempcoef,              // 9:0    uint8_t (5)
+    DisplayBias,                  // 10:0    uint8_t (20)
       
-    RxMillisDelay,                    // 11:0    uint8_t
-                                      // after receiving an invalid char or a packet for another slave, wait for at least rx_millis_delay 
-                                      // before sending any notify messages to the master
-                                      // high priority devices can keep this value low (above 7ms), low priority devices should have higher delays
+    RxMillisDelay,                // 11:0    uint8_t
+                                  // after receiving an invalid char or a packet for another slave, wait for at least rx_millis_delay 
+                                  // before sending any notify messages to the master
+                                  // high priority devices can keep this value low (above 7ms), low priority devices should have higher delays
                                           
-    PortDIO,                12,   // 12:0    digital pins 0 to 7 set as INPUT (0) or OUTPUT (1)
+    PortDIO =               12,   // 12:0    digital pins 0 to 7 set as INPUT (0) or OUTPUT (1)
                                   /* NOTES:
                                    *    0 is RX (must be input)
                                    *    1 is TX (must be output)
@@ -78,7 +78,7 @@ public:
                                   */ 
     PortCPullup,                  // 17:0   pullups enabled on digital pins 0 to 7 (probably all set as no pullups (0))
 
-    TempSensorResolution,         // 18:0   DS18B20 temperature sensor resolution (10 to 12 bits)
+    TempSensorResolution,         // 18:0   DS18B20 temperature sensor resolution (10 to 12 bits) (Not Used)
     // SPARE                      // 19:0 to 22:0
     
     McpNumDevices =         23,   // 23:0   actual number of MCP devices (0 to 4 max)
