@@ -35,26 +35,24 @@ public:
   typedef enum 
   {
     // NameInEEProm         #     // offset:bank
-    DeviceId =              0,    // 0:0     uint8_t - device #1 to #32
+    DeviceId =              0,    // 0:0    uint8_t - device #1 to #32
       
-    BeeperTone,                   // 1:0     uint8_t
+    BeeperTone,                   // 1:0    uint8_t
       
-    // TempSampleRate,            // 2:0     uint8_t; sample temps (in seconds); if =0, don't sample temps (do with the T0:1 commands (send twice)
-      
-    // AnalogSampleRate,          // 3:0    uint8_t; sample analog inputs (in seconds)
+    DisplayMinMaxPosition,        // 2:0    uint8_t    
       
     Time =                  4,    // 4:0    long ; stored every hour 
       
     DisplayVop =            8,    // 8:0    uint8_t contrast (188)
     DisplayTempcoef,              // 9:0    uint8_t (5)
-    DisplayBias,                  // 10:0    uint8_t (20)
+    DisplayBias,                  // 10:0   uint8_t (20)
       
-    RxMillisDelay,                // 11:0    uint8_t
+    RxMillisDelay,                // 11:0   uint8_t
                                   // after receiving an invalid char or a packet for another slave, wait for at least rx_millis_delay 
                                   // before sending any notify messages to the master
                                   // high priority devices can keep this value low (above 7ms), low priority devices should have higher delays
                                           
-    PortDIO =               12,   // 12:0    digital pins 0 to 7 set as INPUT (0) or OUTPUT (1)
+    PortDIO =               12,   // 12:0   digital pins 0 to 7 set as INPUT (0) or OUTPUT (1)
                                   /* NOTES:
                                    *    0 is RX (must be input)
                                    *    1 is TX (must be output)
@@ -106,17 +104,17 @@ public:
     // These EEPROM values are set during startup to show the compiled state of the code (but it would be better to put these into PROGMEM)
     OptionCompile =         59,   // 59:0     
 
-    LedsMax,                      // 60:0    shows the max number of leds allowed in this compiled version of the software
-    TempSensorsMax,               // 61:0     shows the max number of temperature sensors allowed in this compiled version of the software
-    AnalogInputsMax,              // 62:0    shows the max number of analog inputs allowed in this compiled version of the software
-    Mcp23017Max,                  // 63:0    shows the max number of MCP23017 devices allowed in this compiled version of the software
+    LedsMax,                      // 60:0   shows the max number of leds allowed in this compiled version of the software
+    TempSensorsMax,               // 61:0   shows the max number of temperature sensors allowed in this compiled version of the software
+    AnalogInputsMax,              // 62:0   shows the max number of analog inputs allowed in this compiled version of the software
+    Mcp23017Max,                  // 63:0   shows the max number of MCP23017 devices allowed in this compiled version of the software
     
     // SPARE                      // 64:0 to 95:0
     
-    AnalogTypes  =          96,   // 96:0    8 bytes defining the reading, timing and interpretation of each analog input
+    AnalogTypes  =          96,   // 96:0   8 bytes defining the reading, timing and interpretation of each analog input (NOT IMPLEMENTED!)
     AnalogPrePcodeIndex =   104,  // 104:0  index for Pcode performed before the Analog values are read
     AnalogPostPcodeIndex =  105,  // 105:0  index for Pcode performed after the Analog values are read
-    AnalogPreDelay =        106,    // 106:0  uint16_t after AnalogPrePcode, delay at least this value in ms before reading analog values
+    AnalogPreDelay =        106,  // 106:0  uint16_t after AnalogPrePcode, delay at least this value in ms before reading analog values
 
     // SPARE                      // 108:0 to 127:0
   

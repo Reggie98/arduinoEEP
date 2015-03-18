@@ -389,7 +389,8 @@ void serialComms::checkCharAvailable ()
         T                     // read temperatures or read the DS18B20 address codes or clear the min/max values or read Arduino Temp/Volts
         R35                   // reset the arduino
         w xx:ABCD             // write ABCD to display position xx (0-83)
-        N  1 or 0             // switch display to/from interactive mode
+        W 0 or 1 or 2         // set the display to show current (0) or min (1) or max (2) values for analog, temperature or humidity readings
+        N 1 or 0              // switch display to/from interactive mode
         K                     // acknowledge previous notify message or command
         
         ***** list of notify messages
@@ -847,6 +848,11 @@ void serialComms::checkCharAvailable ()
             Display.gotoCharPosition (current_value [0]) ;
             current_value [current_value_ptr] = 0 ; // put the End Of String marker at the end of the string
             Display.print ( &(current_value [1]) ) ; // prints all characters in the array current_value starting from [1] 
+          }
+          break ;
+        case 'W' :
+          {
+            Display.setDisplayNormalMinMax (current_value [0]) ; 
           }
           break ;
         case 'N' :

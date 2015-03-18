@@ -18,7 +18,7 @@
  
 
 #define VERSION             "1.00"
-#define VERSION_DATE        20150317
+#define VERSION_DATE        20150318
 
 #define DEVICE_ID           4       // only used in initial setup to put the value into the EEPROM
 #define EEPROM_CLEAR_ALL    0       // clear all the values in the EEPROM to a default state

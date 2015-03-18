@@ -61,13 +61,17 @@ public:
   void setDisplayMode (bool) ;  // false = normal mode (able to print on display)
                                 // true = interactive mode - all key presses are all sent to the master, 
                                 // and the display is controlled by master
+  void setDisplayNormalMinMax (uint8_t) ; // display either current values, or show minimums/maximums for analog, temps, humidity
+  uint8_t printFixedMessage (uint8_t) ;   // print one of the fixed messages (0-14) from the messageIndex in eeMap
   
 private:
   unsigned long display_start_time ;
   void printDigits (int) ;
   void printTime () ;
-  bool is_display_interactive ;
   uint8_t printValueFraction (int, uint8_t, bool) ;
+
+  bool is_display_interactive ;
+  uint8_t display_normal_min_max ;
   
   typedef enum 
   {

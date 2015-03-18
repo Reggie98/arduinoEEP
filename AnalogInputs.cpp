@@ -163,20 +163,25 @@ void analogInputs::checkAnalogInputs ()
   }
 }
 
-void analogInputs::readArduinoTempC (ArduinoValMinMax val_min_max, int& value, uint8_t& fraction) 
+int analogInputs::readAnalog (uint8_t analog_port, ArduinoValMinMax val_min_max)
 {
-  unsigned int fract ;
   switch (val_min_max)
   {
   case ARDUINO_VAL :
-    value = analog_values [ARDUINO_TEMP] ;
+    return analog_values [analog_port] ;
     break ;
   case ARDUINO_MIN :
-    value = analog_values_min [ARDUINO_TEMP] ;
+    return analog_values_min [analog_port] ;
     break ;
   case ARDUINO_MAX :
-    value = analog_values_max [ARDUINO_TEMP] ;
+    return analog_values_max [analog_port] ;
   }
+}
+
+void analogInputs::readArduinoTempC (ArduinoValMinMax val_min_max, int& value, uint8_t& fraction) 
+{
+  unsigned int fract ;
+  value = readAnalog (ARDUINO_TEMP, val_min_max) ;
   fract = value ;
   value /= TEMP_HUMIDITY_TO_FLOAT ;
 
@@ -188,18 +193,7 @@ void analogInputs::readArduinoTempC (ArduinoValMinMax val_min_max, int& value, u
 
 void analogInputs::readArduinoVcc (ArduinoValMinMax val_min_max, int& value, uint8_t& fraction)
 {
-  switch (val_min_max)
-  {
-  case ARDUINO_VAL :
-    value = analog_values [ARDUINO_VCC] ;
-    break ;
-  case ARDUINO_MIN :
-    value = analog_values_min [ARDUINO_VCC] ;
-    break ;
-  case ARDUINO_MAX :
-    value = analog_values_max [ARDUINO_VCC] ;
-    break ;    
-  }
+  value = readAnalog (ARDUINO_VCC, val_min_max) ;
   fraction = value - (value / 100) * 100 ;
   value /= 100 ;
 }

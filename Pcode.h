@@ -112,15 +112,19 @@ public:
     
     CmdMiscInteractive =    0x07,     // 151       set the keypad/display into interative mode 
                                       //           (send all key presses to master, update display from master)
-    CmdMiscDisplay =        0x08,     // 152      (ouput + n bytes) display a string (ends with 0) at the position on the display
-                                      // 153-155  (output) 3-6 => PWM on pins D3, D5, D6; (NOT YET CODED)
+    // CmdMiscDisplay =        0x08,     // 152      (output + n bytes) display a string (ends with 0) at the position on the display
+    CmdMiscDisplayNormal =  0x08,     // 152      (output) set the display to show all the normal (current) values for analog/temp/humitidy
+    CmdMiscDisplayMin =     0x09,     // 153      (output) set the display to show all the minimum values for analog/temp/humitidy
+    CmdMiscDisplayMax =     0x0A,     // 154      (output) set the display to show all the minimum values for analog/temp/humitidy
+                                      // 155-157  (output) 3-6 => PWM on pins D3, D5, D6; (NOT YET CODED)
     // 0xA0-0xAF not used
     PcodeCmdTemp =          0xB0,     // 176-183  (input + 2 bytes) Temps 0 to 7 (message)
     // 0xB8-0xBF not used
     PcodeCmdBeep =          0xC0,     // 192-199  (output) 0-7 => 1-8 short beeps, 
                                       //  200-207  (output) 8-15 => 1-8 long beeps
     PcodeCmdAlarm =         0xD0,     // 208-223  (output) switch on or off alarms 0-15
-    // 0xE0-0xEF not used
+    PcodeCmdMessage =       0xE0,     // 224-238  (output + 1 byte) write message 0-14 to display at given position
+    CmdMessageInline =      0x0F,     // 239      (output + n bytes) display a string (ends with 0) at the position on the display
     PcodeCmdCond =          0xF0      // 240-255  (message) condition met
   } ;
   

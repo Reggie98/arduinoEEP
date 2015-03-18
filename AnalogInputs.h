@@ -50,7 +50,7 @@ public:
   analogInputs () ;
   void begin () ;
   void clearMinMax () ;
-  void checkAnalogInputs ()  ;
+  void checkAnalogInputs () ;
   int analog_values [ANALOG_INPUTS_MAX] ;
   int analog_values_min [ANALOG_INPUTS_MAX] ;
   int analog_values_max [ANALOG_INPUTS_MAX] ;
@@ -63,6 +63,7 @@ public:
     ARDUINO_MAX
   } ;
   
+  int readAnalog (uint8_t, ArduinoValMinMax) ;
   void readArduinoTempC (ArduinoValMinMax, int&, uint8_t&) ;
   void readArduinoVcc (ArduinoValMinMax, int&, uint8_t&) ;  
   

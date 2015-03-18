@@ -22,6 +22,7 @@
 display::display ()  
 {
   is_display_interactive = false ;
+  display_normal_min_max = 0 ;
 }
 
 void display::gotoCharPosition (uint8_t char_position) 
@@ -49,6 +50,11 @@ bool display::isDisplayInteractive ()
 void display::setDisplayMode (bool new_mode)
 {
   is_display_interactive = new_mode ;
+}
+
+void display::setDisplayNormalMinMax (uint8_t new_normal_min_max)
+{
+  display_normal_min_max = new_normal_min_max ;
 }
 
 void display::printTime ()
@@ -79,6 +85,37 @@ uint8_t display::printValueFraction (int value, uint8_t fraction, bool withTwoDe
   if (fraction > 10 && !withTwoDecimalPlaces) fraction /= 10 ;
   display_position += print (fraction) + 1 ; // for the '.'  
   return display_position ;
+}
+
+uint8_t display::printFixedMessage (uint8_t message_number)
+{
+  uint8_t chars_printed = 0 ;
+  if (!is_display_interactive)
+  {
+    unsigned int eeprom_position = EEPROM.read (eeMap::MessageIndex + message_number) ;
+    /*
+    Serial.print (", eeprom_position=") ;
+    Serial.print (eeprom_position) ;
+    */
+    if (eeprom_position)
+    {
+      eeprom_position += (eeMap::MessageIndex & 0xFF00) ;
+      // Serial.print (',') ;
+      // Serial.print (eeprom_position) ;
+      char ch = EEPROM.read (eeprom_position++) ;
+      // Serial.print (", char=") ;
+      while (ch)
+      {
+        print (ch) ;
+        // Serial.print (ch, DEC) ;
+        ch = EEPROM.read (eeprom_position++) ;
+        // if (ch) Serial.print (',') ;
+        chars_printed ++ ;
+      }
+    }
+    // Serial.println () ;
+  }
+  return chars_printed ;
 }
 
 /*
@@ -128,7 +165,7 @@ void display::checkUpdate ()
         // analog ports A0-A3, A6-A7
         display_position += print (display_item_low) ;
         print ('A') ;
-        display_position += print (AnalogInputs.analog_values [display_item_low]) + 1 ;
+        display_position += print (AnalogInputs.readAnalog (display_item_low, static_cast <analogInputs::ArduinoValMinMax> (display_normal_min_max))) + 1 ;
       } else
       if (display_item_high == DisplayMCP0 && display_item_high <= DisplayMCP3)
       {
@@ -155,7 +192,7 @@ void display::checkUpdate ()
         }
         int value ;
         uint8_t fraction ;
-        TempHumidity.readTemp (display_item_low, tempHumidity::TEMP_VAL, value, fraction ) ;
+        TempHumidity.readTemp (display_item_low, static_cast <tempHumidity::TempValMinMax> (display_normal_min_max), value, fraction ) ;
         display_position += printValueFraction (value, fraction, false) + 1 ;
         } else
       if (display_item == DisplayArduinoTemp)
@@ -164,7 +201,7 @@ void display::checkUpdate ()
         uint8_t fraction ;
         print ('A') ;
         print ('T') ;
-        AnalogInputs.readArduinoTempC (analogInputs::ARDUINO_VAL, value, fraction) ;
+        AnalogInputs.readArduinoTempC (static_cast <analogInputs::ArduinoValMinMax> (display_normal_min_max), value, fraction) ;
         display_position += printValueFraction (value, fraction, false) + 2 ;    // for "AT"          
       } else
       if (display_item == DisplayArduinoVolts)
@@ -173,7 +210,7 @@ void display::checkUpdate ()
         uint8_t fraction ;
         print ('A') ;
         print ('V') ;
-        AnalogInputs.readArduinoVcc (analogInputs::ARDUINO_VAL, value, fraction) ;
+        AnalogInputs.readArduinoVcc (static_cast <analogInputs::ArduinoValMinMax> (display_normal_min_max), value, fraction) ;
         display_position += printValueFraction (value, fraction, true) + 2 ;  // for "AV"      
 
         /*
@@ -185,30 +222,7 @@ void display::checkUpdate ()
       } else
       if (display_item_high == DisplayMessage)
       {
-        unsigned int eeprom_position = EEPROM.read (eeMap::MessageIndex + display_item_low) ;
-        /*
-        Serial.print ("display_position=") ;
-        Serial.print (display_position) ;
-        Serial.print (", eeprom_position=") ;
-        Serial.print (eeprom_position) ;
-        */
-        if (eeprom_position)
-        {
-          eeprom_position += (eeMap::MessageIndex & 0xFF00) ;
-          // Serial.print (',') ;
-          // Serial.print (eeprom_position) ;
-          char ch = EEPROM.read (eeprom_position++) ;
-          // Serial.print (", char=") ;
-          while (ch)
-          {
-            print (ch) ;
-            // Serial.print (ch, DEC) ;
-            ch = EEPROM.read (eeprom_position++) ;
-            // if (ch) Serial.print (',') ;
-            display_position ++ ;
-          }
-        }
-        // Serial.println () ;
+        display_position += printFixedMessage (display_item_low) ;
       }
       
       if (display_position == display_position_start) // display_position won't change unless there was a valid item printed
@@ -224,7 +238,16 @@ void display::checkUpdate ()
         }
       }
       display_position = display_position_start ;
-    }  
+    } 
+    
+    // now write the normal/min/max 
+    display_position = EEPROM.read (eeMap::DisplayMinMaxPosition) ;
+    if (display_position)
+    {
+      gotoCharPosition (display_position) ;
+      printFixedMessage (display_normal_min_max) ;
+    }
+     
     // writeLcdDone () ; // now finished writing to the SPI LCD 
   }
 }

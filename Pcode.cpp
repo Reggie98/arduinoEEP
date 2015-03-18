@@ -367,8 +367,29 @@ uint8_t pcode::change_port (uint8_t new_val, unsigned int & pcode_ptr)
       Alarms.alarmTime [new_port] = 0 ; // turn the alarm off
     }
     break ;
-      
-  case PcodeCmdMisc :
+    
+  #if COMPILE_NOKIA_5110
+  case PcodeCmdMessage :
+    if (!Display.isDisplayInteractive ())
+    {
+      Display.gotoCharPosition (EEPROM.read (pcode_ptr ++)) ;
+      unsigned int message_ptr = pcode_ptr;
+      if (new_port < CmdMessageInline)
+      {
+        message_ptr = (eeMap::MessageIndex & 0xFF00) + EEPROM.read (eeMap::MessageIndex + new_port) ;
+      }
+
+      char ch = EEPROM.read (message_ptr ++) ;
+      while (ch)
+      {
+        Display.print (ch) ;
+        ch = EEPROM.read (message_ptr ++) ;
+      }
+    }
+    break ;
+  #endif 
+    
+   case PcodeCmdMisc :
     switch (new_port)
     {
     #if COMPILE_NOKIA_5110
@@ -376,17 +397,10 @@ uint8_t pcode::change_port (uint8_t new_val, unsigned int & pcode_ptr)
       Display.setDisplayMode (display::DisplayInteractive) ;
       Display.clear () ;
       break ;
-    case CmdMiscDisplay :
-      if (!Display.isDisplayInteractive ())
-      {
-        Display.gotoCharPosition (EEPROM.read (pcode_ptr ++)) ;
-        char ch = EEPROM.read (pcode_ptr ++) ;
-        while (ch)
-        {
-          Display.print (ch) ;
-          ch = EEPROM.read (pcode_ptr ++) ;
-        }
-      }
+    case CmdMiscDisplayNormal :
+    case CmdMiscDisplayMin :
+    case CmdMiscDisplayMax :
+      Display.setDisplayNormalMinMax (new_port - CmdMiscDisplayNormal) ;
       break ;
     #endif  
     case CmdMiscResetInt0 :
